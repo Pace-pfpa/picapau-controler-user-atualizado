@@ -14,12 +14,12 @@ export class AuthUseCase{
     async execute(user: ILoginDTO){
         try{
             
-            console.log(user)
+           
             const userLogin = await this.userRepository.findByEmail(user.email)
-
+            
             if(!userLogin) throw new Error("User Not Found");
             const valuePassword = await this.authRepository.validation(user.password, userLogin);
-
+            console.log(valuePassword)
             if(!valuePassword) return new Error("password invalid");
 
             const token = JsonWebToken(userLogin);

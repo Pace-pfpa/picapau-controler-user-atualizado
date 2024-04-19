@@ -9,10 +9,10 @@ export class AuthController {
 		const {email, password} = request.body;
 		try{
 			const novoFilme = await this.createUseUseCase.execute({email, password});
-			console.log(novoFilme)
 			if(novoFilme instanceof Error){
 				console.log(novoFilme.message)
 				if(novoFilme.message.trim() == "User Not Found") return response.status(400).json('User Not Found')
+				if(novoFilme.message.trim() == "password invalid") return response.status(400).json('password invalid')
 			}
 			return response.status(200).json(novoFilme);
 		}catch(error){

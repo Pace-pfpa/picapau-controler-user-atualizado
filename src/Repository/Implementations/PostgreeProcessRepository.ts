@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from "@prisma/client";
+import { PrismaClient, Prisma, Processo } from "@prisma/client";
 import { DefaultArgs } from "@prisma/client/runtime/library";
 import { IProcessDTO } from "../../DTO/ProcessDTO";
 import { ProcessRepository } from "../ProcessRepository";
@@ -27,11 +27,19 @@ export class PostgreeProcessRepository implements ProcessRepository{
         return processosFiltradosComStatus(process0s,date, status)
         
     }
-    deleteById(id: string): Promise<{ id: number; nome: string; nup: string; dia: Date; hora: string; statusProcess: string; userId: number; tarefadId: string }> {
-        throw new Error("Method not implemented.");
+    async deleteById(id: number): Promise<Processo> {
+        return await ( await this.repository()).processo.delete({
+            where: {
+                id
+            }
+        })
     }
-    deleteAll(): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    async deleteAll(id: number): Promise<any> {
+        return await ( await this.repository()).processo.deleteMany({
+            where: {
+                userId: id
+            }
+        })
     }
     async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {
         return await prismaClient;

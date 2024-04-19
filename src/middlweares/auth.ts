@@ -11,7 +11,7 @@ type tokenPayload ={
 export function authMiddlwares(req: Request, res: Response, next: NextFunction){
     console.log("midd")
     const { authorization } = req.headers;
-    console.log(authorization)
+    console.log(req.headers)
     if(!authorization){
         return res.status(401).json({error: "token not provided"})
     }
