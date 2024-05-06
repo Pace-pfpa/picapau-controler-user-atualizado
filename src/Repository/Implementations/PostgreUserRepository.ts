@@ -7,29 +7,56 @@ import { hash } from 'bcrypt';
 
 
 export class PostgreeUseRepository implements IUserRepository{
-	async findByEmail(email: string): Promise<{ id: number; nome: string; email: string; password: string; }| null> {
+	async findByEmail(email: string): Promise<{ id: number; nome: string; email: string; password: string; cpf: string }| null> {
 		return await (await this.repository()).user.findFirst({
-            where: {
-                email: email
-            }
-        })
+			where: {
+				email: email
+			}
+		});
 	}
-	findByAll(): Promise<{ id: number; nome: string; email: string; password: string; }[]> {
+	findByAll(): Promise<{ id: number; nome: string; email: string; password: string; cpf: string}[]> {
 		throw new Error('Method not implemented.');
 	}
-	async save(user: ICreateUserDTO): Promise<{ id: number; nome: string; email: string; password: string; }> {
+	async save(user: ICreateUserDTO): Promise<{ id: number; nome: string; email: string; password: string; cpf: string}> {
 		user.password = await hash(user.password, 8);
 		const newUser = await (await this.repository()).user.create({
 			data: user
-		})
+		});
 		return newUser;
 		
 	}
-	findById(id: number): Promise<{ id: number; nome: string; email: string; password: string; }> {
+	findById(id: number): Promise<{ id: number; nome: string; email: string; password: string; cpf: string}> {
 		throw new Error('Method not implemented.');
 	}
-	delete(id: string): Promise<{ id: number; nome: string; email: string; password: string; }> {
+	delete(id: string): Promise<{ id: number; nome: string; email: string; password: string; cpf: string}> {
 		throw new Error('Method not implemented.');
+	}
+
+	async findByCpf(cpf: string): Promise<{ id: number; nome: string; email: string; password: string; cpf: string; } | null> {
+		return await (await this.repository()).user.findFirst({
+			where: {
+				cpf: cpf
+			}
+		});
+	}
+
+
+	async updatePassord(cpf: string, password: string): Promise<{ id: number; nome: string; email: string; password: string; cpf: string; } | Error> {
+		const user = await this.findByCpf(cpf);
+
+		//nunca vai ser 
+		if(!user) return new Error('cpf nao encontrado');
+		
+		const newPassord = await hash(password, 8);
+
+		return await (await this.repository()).user.update({
+			where: {
+				id: user.id
+			},
+			data: {
+				password: newPassord
+			}
+		});
 	}
 
 	async repository(): Promise<PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>> {

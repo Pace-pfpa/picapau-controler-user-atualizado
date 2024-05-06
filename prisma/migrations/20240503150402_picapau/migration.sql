@@ -4,6 +4,7 @@ CREATE TABLE "users" (
     "nome" TEXT NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "cpf" TEXT NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -16,6 +17,7 @@ CREATE TABLE "processos" (
     "hora" TEXT NOT NULL,
     "statusProcess" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
+    "tarefadId" TEXT NOT NULL,
 
     CONSTRAINT "processos_pkey" PRIMARY KEY ("id")
 );

@@ -11,8 +11,7 @@ export class CreateUseUseCase{
 	}
 	async execute(user: ICreateUserDTO){
 		const userExiste = await this.userRepository.findByEmail(user.email);
-		console.log(userExiste)
-		if(userExiste) return new Error("usuario ja existe");
+		if(userExiste) return new Error('usuario ja existe');
 		return await this.userRepository.save(user);
 
 	}

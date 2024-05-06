@@ -5,9 +5,9 @@ import {  CreateUseUseCase } from './CreateUserUseCase';
 export class CreateUseController {
 	constructor(private createUseUseCase: CreateUseUseCase){}
 	async handle(request: Request, response: Response){
-		const {nome, email, password} = request.body;
+		const {nome, email, password, cpf} = request.body;
 		try{
-			const novoFilme = await this.createUseUseCase.execute({nome, email, password});
+			const novoFilme = await this.createUseUseCase.execute({nome, email, password, cpf});
 			if(novoFilme instanceof Error){
 				return response.status(400).json('usuario ja existe');
 			}
