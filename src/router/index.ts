@@ -5,6 +5,7 @@ import { authMiddlwares } from '../middlweares/auth';
 import { createProcessController } from '../modules/CreateProcess';
 import { findAllController } from '../modules/FindAllProcess';
 import { deleteProcessAllController, deleteProcessIdController } from '../modules/DeleteProcess';
+import { updatePasswordController } from '../modules/UpdatePassword';
 
 
 const router = Router();
@@ -37,6 +38,10 @@ router.delete("/deleteById", authMiddlwares, async (req, res) => {
 	return await deleteProcessIdController.handle(req, res);
 })
 
+router.post("/updatePassword", async (req, res) => {
+	console.log(req.body)
+	return await updatePasswordController.handle(req, res);
+})
 
 
 export { router };

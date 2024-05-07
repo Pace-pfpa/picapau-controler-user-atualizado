@@ -10,6 +10,6 @@ export interface IUserRepository{
     findById(id: number): Promise<User>;
     delete(id: string): Promise<User>;
     findByCpf(cpf: string): Promise<User | null>;
-    updatePassord(id: string,password: string): Promise<User | Error>;
+    updatePassord(id: string,password: string, email: string): Promise<User | Error>;
     repository(): Promise<PrismaClient>
 }

@@ -19,7 +19,8 @@ model User {
   nome      String
   email     String
   password  String
-  cpf       String
+  cpf       String?
+  role      Int?       
   processos Processo[] // Adiciona um campo de relação para indicar que um usuário pode ter vários processos
 
   @@map("users")

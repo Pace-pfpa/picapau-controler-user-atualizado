@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "role" INTEGER,
+ALTER COLUMN "cpf" DROP NOT NULL;

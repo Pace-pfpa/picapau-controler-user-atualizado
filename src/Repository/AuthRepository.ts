@@ -4,6 +4,6 @@ import { ICreateUserDTO } from '../DTO/CreateUserDTO';
 
 export interface IAuthRepository{
     login(userLogin: ILoginDTO): Promise<User | null>
-    validation(password: string, user: ICreateUserDTO): Promise<boolean | boolean>
+    validation(password: string, user: ICreateUserDTO): Promise<boolean>
     repository(): Promise<PrismaClient>
 }

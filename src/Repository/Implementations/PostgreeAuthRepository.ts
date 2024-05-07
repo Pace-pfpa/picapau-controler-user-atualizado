@@ -7,7 +7,7 @@ import { compare } from 'bcrypt';
 import { ICreateUserDTO } from '../../DTO/CreateUserDTO';
 
 export class PostgreeAuthRepository implements IAuthRepository{
-	async login(userLogin: ILoginDTO): Promise<{ id: number; nome: string; email: string; password: string; cpf: string} | null> {
+	async login(userLogin: ILoginDTO): Promise<{ id: number; nome: string; email: string; password: string; cpf: string | null; role: number| null} | null> {
 		return await (await this.repository()).user.findFirst({
 			where: {
 				email: userLogin.email
@@ -16,7 +16,7 @@ export class PostgreeAuthRepository implements IAuthRepository{
 	}
 
 
-	async validation(password: string, user: User): Promise<boolean | boolean> {
+	async validation(password: string, user: User): Promise<boolean> {
 		return await compare(password, user.password);
 	}
 

@@ -8,7 +8,7 @@ export class UpdatePasswordUseCase{
 		this.userRepository = userRepository;
 	}
 
-	async execute(cpf: string, password: string){
-		return this.userRepository.updatePassord(cpf, password);
+	async execute(cpf: string, password: string, email: string){
+		return this.userRepository.updatePassord(cpf, password, email);
 	}
 }
