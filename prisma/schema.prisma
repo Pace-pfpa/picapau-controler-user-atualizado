@@ -38,3 +38,13 @@ model Processo {
 
   @@map("processos")
 }
+
+model salarioMinimo {
+  id       Int    @id @default(autoincrement())
+  
+  ano      DateTime
+
+  valor    Float
+
+   @@map("salariominimo")
+}
