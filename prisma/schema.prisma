@@ -42,9 +42,9 @@ model Processo {
 model salarioMinimo {
   id       Int    @id @default(autoincrement())
   
-  ano      DateTime
+  ano      String
 
-  valor    Float
+  valor    String
 
    @@map("salariominimo")
 }

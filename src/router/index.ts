@@ -6,6 +6,8 @@ import { createProcessController } from '../modules/CreateProcess';
 import { findAllController } from '../modules/FindAllProcess';
 import { deleteProcessAllController, deleteProcessIdController } from '../modules/DeleteProcess';
 import { updatePasswordController } from '../modules/UpdatePassword';
+import { salarioMinimoController } from '../modules/CreateSalarioMinimo';
+import { findByAnoSMController } from '../modules/FindByAnoSalarioMinimo';
 
 
 const router = Router();
@@ -41,6 +43,14 @@ router.delete('/deleteById', authMiddlwares, async (req, res) => {
 router.post('/updatePassword', async (req, res) => {
 	console.log(req.body);
 	return await updatePasswordController.handle(req, res);
+});
+
+router.post('/createSalarioMinimo', async (req, res) => { 
+	return await salarioMinimoController.handle(req, res);
+});
+
+router.get('/findSalarioMinimo/:ano', async (req, res) => {
+	return await findByAnoSMController.handle(req, res);
 });
 
 
