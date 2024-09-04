@@ -1,72 +1,46 @@
-<!-- remember update all README when end project-->
-# 2º Desafio | AWS_FULLSTACK_FEV24 - Projeto Compacine ️️
- <img width="20%"  src="./public/imagesREADME/compassUolLogoSvg.svg"/>
+# Pica-Pau Controle de Usuário
 
-Este é o repositório do projeto "Login + Keep Alive" desenvolvido como parte do estágio na Compass UOL. Abaixo estão as informações importantes para o desenvolvimento, entrega e funcionalidades do projeto.
+## Descrição
+O **Pica-Pau Controle de Usuário** é o componente intermediário que gerencia a comunicação entre a API e o banco de dados. Ele utiliza o PostgreSQL como banco de dados e o **Prisma** como ORM para realizar operações CRUD de usuários, recuperação de senha, e manipulação de processos no banco de dados.
+Comunica-se com o **SuperPicau-api** e o **Frontend**.
 
-## Como instalar as dependências:
-```sh
-git clone https://github.com/EduardoMG12/Challenge-2---Squad-1-.git
-cd Challenge-2---Squad-1-
-npm install
+## Tecnologias Utilizadas
+- **Node.js** com **TypeScript**
+- **Prisma** (ORM)
+- **PostgreSQL**
+- **Docker** e **Docker Compose** (para containerização)
 
-```
+## Instalação
+1. Clone o repositório:
 
-## Como rodar o projeto:
-```sh
+   ```bash
+   git clone https://github.com/Pace-pfpa/picapau-controler-user-atualizado.git
+2. Instale as dependências:
 
-npm run dev
+    ```bash
+   npm install
+## Configuração
 
-```
+1. Copie o arquivo .env-example e renomeie para .env:
 
+    ```bash
+   cp .env.development.local .env
+2. Preencha as variáveis de ambiente necessárias no arquivo .env.
 
-<details>
-  <summary>Algumas imagens o projeto <img width="20" src="https://flagicons.lipis.dev/flags/4x3/br.svg"></summary>
-  <img width="40%"  src="./public/imagesREADME/folderStructure.png"/>
-  <img width="40%"  src="./public/imagesREADME/expressConfigExample.png"/>
-  <img width="40%"  src="./public/imagesREADME/dockerFileConfigExample.png"/><!--  remember add image configExpressProject when end project
-   remember add image dockerConfigurations when end project
-  <img width="40%"  src="./public/imagesREADME/"/>  remember add image first route when end project
-  <img width="40%"  src="./public/imagesREADME/"/>  remember add image second route when end project
-  and add other routes images if want
-  squad image for some one daily
-  --> 
-</details>
-
-
-## Sobre o desenvolvimento projeto.
-
-### Descrição.
-
-O projeto consiste em criar um CRUD completo de um sistema de cinema, Obrigatoriamente utilizando Express, ORM e Docker Compose. O Projeto deve seguir as especificações do [Notion](https://animated-beard-0ba.notion.site/2-Desafio-AWS_FULLSTACK_FEV24-8e410d1f653241cb8553c763d16d305c), com atenção especial ao prazo e os requisitos obrigatorios do projeto.
-
-### *P.O*
-- **Anthoni Bortolotto Martinelli:** [anthoni.martinelli@compasso.com.br](mailto:anthoni.martinelli@compasso.com.br)
-
-### *Instrutores*
-- **Rafaela Janeczko:** [rafaela.janeczko@compasso.com.br](mailto:rafaela.janeczko@compasso.com.br)
-- **Maithe Saldanha Ferrao:** [maithe.ferrao@compasso.com.br](mailto:maithe.ferrao@compasso.com.br)
-- **Cassio Silva Takarada:** [cassio.takarada@compasso.com.br](mailto:cassio.takarada@compasso.com.br)
-- **Leonardo Buhring Muller:** [l.muller.dev@gmail.com](mailto:l.muller.dev@gmail.com)
-- **Gabriel Bezerra Rodrigues:** [gabriel.bezerra@compasso.com.br](mailto:gabriel.bezerra@compasso.com.br)
-
-### **Prazo**
-
-Prazo para **envio** do e-mail com **link do repositório:** 09/04/2024  (terça-feira), **até às 17h30**.
-
-## Sobre o desenvolvimento feito pela nossa Squad
-
-### Squad: 
-
-- [**Claudio Renato**](https://github.com/claudiofariias)
-- [**Charles Eduardo**](https://github.com/EduardoMG12)
-- [**Edenilson Costa**](https://github.com/gameprime)
-- [**Fabio Aparecido**](https://github.com/fabusilva)
-- [**Patrick Sampaio**](https://github.com/PatrickSampa)
-
-### Trello:
-[Trello](https://trello.com/invite/b/Je4JEUey/ATTI918cd14197eb633febcad331e5dce02e59691D70/projeto-compacine)
-
-### Descrição:
-
-### Dificuldades do projeto:
+## Rodando o Projeto
+### Com npm:
+* Inicie o servidor localmente: 
+    ```bash
+    npm run serve
+### Com Docker Compose
+* Suba o ambiente usando Docker Compose:
+    ```bash
+    docker-compose up -d --build
+## Entidades e Operações
+* O projeto utiliza o Prisma ORM para definir o schema e as entidades do banco de dados.
+* As principais funcionalidades incluem:
+  * CRUD de usuários
+  * Recuperação de senha
+  * Salvamento e exclusão de processos no banco de dados
+## Contribuição
+Atualmente, a contribuição é restrita a membros da equipe pica-pau na organização Nutec-PFPA no GitHub.
