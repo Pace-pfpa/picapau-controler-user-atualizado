@@ -8,6 +8,7 @@ import { deleteProcessAllController, deleteProcessIdController } from '../module
 import { updatePasswordController } from '../modules/UpdatePassword';
 import { salarioMinimoController } from '../modules/CreateSalarioMinimo';
 import { findByAnoSMController } from '../modules/FindByAnoSalarioMinimo';
+import { createAdvogadoController } from '../modules/CreateAdvogado';
 
 
 const router = Router();
@@ -51,6 +52,11 @@ router.post('/createSalarioMinimo', async (req, res) => {
 
 router.get('/findSalarioMinimo/:ano', async (req, res) => {
 	return await findByAnoSMController.handle(req, res);
+});
+
+router.post('/create/advogado', async (req, res) => {
+	console.log('opaa');
+	return await createAdvogadoController.handle(req, res);
 });
 
 

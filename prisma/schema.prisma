@@ -13,6 +13,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Regiao {
+  PRF1
+  PRF2
+  PRF3
+  PRF4
+  PRF5
+  PRF6
+}
+
 
 model User {
   id        Int        @id @default(autoincrement())
@@ -22,6 +31,7 @@ model User {
   cpf       String?
   role      Int?       
   processos Processo[] // Adiciona um campo de relação para indicar que um usuário pode ter vários processos
+  adicionados Advogado[] @relation("Adicionador")
 
   @@map("users")
 }
@@ -47,4 +57,18 @@ model salarioMinimo {
   valor    String
 
    @@map("salariominimo")
+}
+
+model Advogado {
+	id           Int       @id @default(autoincrement())
+	nome         String
+	oab          String    
+  	local        String    
+	regiao		 Regiao
+  	comunicadopor String      
+  	adicionadopor Int
+
+  	adicionadoporUser User @relation("Adicionador", fields: [adicionadopor], references: [id])
+
+	@@map("advogados")
 }

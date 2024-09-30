@@ -45,9 +45,9 @@ export class PostgreeUseRepository implements IUserRepository{
 		const user = await this.findByCpf(cpf);
 		const userEmail = await this.findByEmail(email);
 		//nunca vai ser 
-		if(!user && !userEmail) return new Error("cpf e email nao encontrados")
+		if(!user && !userEmail) return new Error('cpf e email nao encontrados');
 		if(!user) return new Error('cpf nao encontrado');
-		if(!userEmail) return new Error("email nao encontrado")
+		if(!userEmail) return new Error('email nao encontrado');
 		
 		const newPassord = await hash(password, 8);
 
