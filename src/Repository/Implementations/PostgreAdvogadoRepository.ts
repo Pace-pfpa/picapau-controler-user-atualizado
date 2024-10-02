@@ -1,10 +1,17 @@
-import { PrismaClient, Prisma, Advogado } from '@prisma/client';
+import { PrismaClient, Prisma, Advogado, Regiao } from '@prisma/client';
 import { DefaultArgs } from '@prisma/client/runtime/library';
 import { IAdvogadoRepository } from '../AdvogadoRepository';
 import { ICreateAdvogadoDTO } from '../../DTO/AdvogadoDTO';
 import { prismaClient } from '../../database/prismaClient';
 
 export class PostgreAdvogadoRepository implements IAdvogadoRepository {
+	async findByRegiao(regiao: Regiao): Promise<Advogado[] | null> {
+		return await (await this.repository()).advogado.findMany({
+			where: {
+				regiao: regiao
+			}
+		});
+	}
 
 	findByAll(): Promise<Advogado[]> {
 		throw new Error('Method not implemented.');
@@ -21,9 +28,6 @@ export class PostgreAdvogadoRepository implements IAdvogadoRepository {
 		throw new Error('Method not implemented.');
 	}
 	delete(id: string): Promise<Advogado> {
-		throw new Error('Method not implemented.');
-	}
-	findByNome(nome: string): Promise<Advogado | null> {
 		throw new Error('Method not implemented.');
 	}
 	

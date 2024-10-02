@@ -5,7 +5,8 @@ export class CreateAdvogadoController {
 	constructor(private createAdvogadoUseCase: CreateAdvogadoUseCase) {}
 
 	async handle(request: Request, response: Response) {
-		const {nome, oab, local, comunicadopor, regiao, adicionadopor} = request.body;
+		const {nomeAd, oab, local, comunicadopor, regiao, adicionadopor} = request.body;
+		const nome = nomeAd.toUpperCase();
 		try {
 			const advogado = await this.createAdvogadoUseCase.execute({
 				nome, oab, local, comunicadopor, regiao, adicionadopor

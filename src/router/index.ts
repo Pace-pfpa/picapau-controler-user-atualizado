@@ -9,6 +9,7 @@ import { updatePasswordController } from '../modules/UpdatePassword';
 import { salarioMinimoController } from '../modules/CreateSalarioMinimo';
 import { findByAnoSMController } from '../modules/FindByAnoSalarioMinimo';
 import { createAdvogadoController } from '../modules/CreateAdvogado';
+import { buscaAdvogadoController } from '../modules/BuscaAdvogado';
 
 
 const router = Router();
@@ -57,6 +58,11 @@ router.get('/findSalarioMinimo/:ano', async (req, res) => {
 router.post('/create/advogado', async (req, res) => {
 	console.log('opaa');
 	return await createAdvogadoController.handle(req, res);
+});
+
+router.get('/search/advogado', async (req, res) => {
+	console.log('milan');
+	return await buscaAdvogadoController.handle(req, res);
 });
 
 
