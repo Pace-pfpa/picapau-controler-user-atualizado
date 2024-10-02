@@ -1,7 +1,7 @@
-import { AuthController } from "./AuthController";
-import { AuthUseCase } from "./AuthUseCase";
-import { PostgreeAuthRepository } from "../../Repository/Implementations/PostgreeAuthRepository";
-import { PostgreeUseRepository } from "../../Repository/Implementations/PostgreUserRepository";
+import { AuthController } from './AuthController';
+import { AuthUseCase } from './AuthUseCase';
+import { PostgreeAuthRepository } from '../../Repository/Implementations/PostgreeAuthRepository';
+import { PostgreeUseRepository } from '../../Repository/Implementations/PostgreUserRepository';
 
 
 

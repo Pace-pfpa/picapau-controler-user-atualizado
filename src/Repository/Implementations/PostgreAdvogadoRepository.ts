@@ -13,8 +13,8 @@ export class PostgreAdvogadoRepository implements IAdvogadoRepository {
 		});
 	}
 
-	findByAll(): Promise<Advogado[]> {
-		throw new Error('Method not implemented.');
+	async findAll(): Promise<Advogado[]> {
+		return await (await this.repository()).advogado.findMany();
 	}
 
 	async save(advogado: ICreateAdvogadoDTO): Promise<Advogado> {
@@ -27,8 +27,13 @@ export class PostgreAdvogadoRepository implements IAdvogadoRepository {
 	findById(id: number): Promise<Advogado> {
 		throw new Error('Method not implemented.');
 	}
-	delete(id: string): Promise<Advogado> {
-		throw new Error('Method not implemented.');
+
+	async delete(id: number): Promise<Advogado> {
+		return await (await this.repository()).advogado.delete({
+			where: {
+				id: id
+			}
+		});
 	}
 	
 	async findByOAB(oab: string): Promise<Advogado | null> {

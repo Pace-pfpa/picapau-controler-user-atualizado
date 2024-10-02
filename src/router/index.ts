@@ -10,6 +10,7 @@ import { salarioMinimoController } from '../modules/CreateSalarioMinimo';
 import { findByAnoSMController } from '../modules/FindByAnoSalarioMinimo';
 import { createAdvogadoController } from '../modules/CreateAdvogado';
 import { buscaAdvogadoController } from '../modules/BuscaAdvogado';
+import { advogadosController } from '../modules/Advogados';
 
 
 const router = Router();
@@ -53,6 +54,14 @@ router.post('/createSalarioMinimo', async (req, res) => {
 
 router.get('/findSalarioMinimo/:ano', async (req, res) => {
 	return await findByAnoSMController.handle(req, res);
+});
+
+router.get('/advogados', async (req, res) => {
+	return await advogadosController.handle(req, res);
+});
+
+router.delete('/advogados/:id', async (req, res) => {
+	return await advogadosController.handleDelete(req, res);
 });
 
 router.post('/create/advogado', async (req, res) => {
